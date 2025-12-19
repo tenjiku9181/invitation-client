@@ -77,9 +77,8 @@ const isShowing = ref(true)
                     alt="Decoration17" class="absolute -bottom-17.5 -left-2.5 w-25 opacity-60 -scale-x-100">
                 <div class="w-full absolute top-0 h-fit z-10">
                     <p class="text-5xl text-gold is_c text-gold italic mb-4">Will you be there?</p>
-                    <p class="mb-6">
                     <p class="cs_s leading-relaxed opacity-85 text-white">Kindly confirm your attendance.</p>
-                    </p><a href="/rsvp"
+                    <a href="/rsvp"
                         class="w-50 h-15  text-fill text-xl bg-gold rounded-full flex items-center justify-center m-auto mt-8 mb-12 border reply-button cursor-pointer">
                         <p class="cg_s text-2xl!">Reply Form</p>
                     </a>

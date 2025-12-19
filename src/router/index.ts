@@ -14,7 +14,7 @@ const router = createRouter({
       path: '/',
       component: MainLayout,
       children: [
-        { path: '', name: 'home', component: Home }, // default
+        { path: '', name: 'home', component: Home },
         { path: 'guide', name: 'access_guide', component: Guide },
         { path: 'story', name: 'our_story', component: Story },
         { path: 'rsvp', name: 'response', component: Rsvp },
