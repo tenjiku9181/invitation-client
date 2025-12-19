@@ -48,10 +48,16 @@
         </div>
       </div>
     </div>
-    <LanguageFooter from='guide' />
+    <div class="relative">
+      <div class="absolute bottom-0 left-1/2 -translate-x-1/2">
+        <LanguageChanger />
+      </div>
+      <DownFrame />
+    </div>
   </section>
 </template>
 <script setup lang="ts">
 import BackButton from '../components/BackButton.vue';
-import LanguageFooter from '../layouts/LanguageFooter.vue'
+import DownFrame from '../components/DownFrame.vue';
+import LanguageChanger from '../components/LanguageChanger.vue';
 </script>

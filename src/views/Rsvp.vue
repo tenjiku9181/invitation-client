@@ -69,7 +69,7 @@
           <textarea id="otherQuestions" name="otherQuestions" class=" w-full border rounded px-3 py-2 border-gold "
             rows="2"></textarea>
         </div>
-        <div class="mb-12 text-start ">
+        <div class="mb-12 text-start">
           <label class=" cg_s text-md mb-1" for="message">
             Your wishes to the couple (Optional)
           </label>
@@ -77,16 +77,22 @@
             rows="3"></textarea>
         </div>
         <button type="submit"
-          class="z-50 text-xl cg_s tracking-wider guide-button w-50 h-11.25 rounded-full flex items-center justify-center m-auto ms-25 border cursor-pointer">
+          class="z-50 text-xl cg_s tracking-wider guide-button w-50 h-11.25 rounded-full flex items-center justify-center m-auto border cursor-pointer">
           Confirm
         </button>
-        <img src="/src\assets\deco4.png" alt="Decoration4" class="mt-10 mb-10 w-20 m-auto ms-42">
-        <LanguageFooter from='rsvp' />
+        <img src="/src\assets\deco4.png" alt="Decoration4" class="mt-10 mb-10 w-20 m-auto">
+        <div class="relative mt-13">
+          <div class="absolute bottom-0 left-1/2 -translate-x-1/2">
+            <language-changer />
+          </div>
+          <down-frame />
+        </div>
       </form>
     </div>
   </section>
 </template>
 <script setup lang="ts">
 import BackButton from '../components/BackButton.vue';
-import LanguageFooter from '../layouts/LanguageFooter.vue'
+import DownFrame from '../components/DownFrame.vue';
+import LanguageChanger from '../components/LanguageChanger.vue';
 </script>

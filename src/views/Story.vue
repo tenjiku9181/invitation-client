@@ -88,15 +88,21 @@
       <div class="w-full relative my-6"><img src="/src\assets/us5.png" alt="Our Story Decoration"
           class="w-full h-auto my-6"></div>
       <img src="/src\assets/deco21.png" alt="Our Story Decoration" class="m-auto w-2/5">
-      <div class="text-center mt-10 mb-4 text-base cg_s opacity-90">
+      <div class="text-center mt-10 mb-10 text-base cg_s opacity-90">
         <p>Design &amp; Implementation by Taksh Gadhiya</p>
         <p>© Copyright 2025. All Rights Reserved.</p>
       </div>
     </div>
-    <LanguageFooter from="story" />
+    <div class="relative">
+      <div class="absolute bottom-0 left-1/2 -translate-x-1/2">
+        <LanguageChanger />
+      </div>
+      <DownFrame />
+    </div>
   </section>
 </template>
 <script setup lang="ts">
 import BackButton from '../components/BackButton.vue';
-import LanguageFooter from '../layouts/LanguageFooter.vue';
+import DownFrame from '../components/DownFrame.vue';
+import LanguageChanger from '../components/LanguageChanger.vue';
 </script>

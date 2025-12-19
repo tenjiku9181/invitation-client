@@ -101,7 +101,12 @@
                     </div><img src="/src\assets\us1.png" class="w-1/2">
                 </div>
             </a>
-            <LanguageFooter from="home" />
+            <div class="relative">
+                <div class="absolute bottom-0 left-1/2 -translate-x-1/2">
+                    <LanguageChanger />
+                </div>
+                <DownFrame />
+            </div>
         </div>
     </section>
 </template>
@@ -109,6 +114,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { TransitionRoot } from '@headlessui/vue'
-import LanguageFooter from '../layouts/LanguageFooter.vue'
+import LanguageChanger from '../components/LanguageChanger.vue';
+import DownFrame from '../components/DownFrame.vue';
 const isShowing = ref(true)
 </script>
