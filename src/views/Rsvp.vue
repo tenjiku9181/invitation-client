@@ -53,13 +53,13 @@
           </label>
           <select id="willAttend" name="willAttend" v-model="form.willAttend"
             class="w-full border rounded px-3 py-2 border-gold " required="true">
-            <option selected="true" value="Yes">{{ $t('yes') }}</option>
-            <option value="No">{{ $t('no') }}</option>
+            <option selected="true" value="yes">{{ $t('yes') }}</option>
+            <option value="no">{{ $t('no') }}</option>
           </select>
         </div>
         <div class="mb-6 text-start">
           <label class=" cg_s text-md mb-1" for="foodAllergy">
-            {{$t('food_allergy')}}
+            {{ $t('food_allergy') }}
           </label>
           <textarea id="foodAllergy" name="foodAllergy" v-model="form.foodAllergy"
             class="w-full border rounded px-3 py-2 border-gold "></textarea>
@@ -99,6 +99,8 @@ import BackButton from '../components/BackButton.vue';
 import DownFrame from '../components/DownFrame.vue';
 import LanguageChanger from '../components/LanguageChanger.vue';
 import { reactive, computed } from 'vue'
+import apiClient from "../middleware/axios";
+import Swal from 'sweetalert2'
 
 const form = reactive({
   name: '',
@@ -106,11 +108,22 @@ const form = reactive({
   email: '',
   phone: '',
   guestSide: 'bride',
-  willAttend: 'Yes',
+  willAttend: 'yes',
   foodAllergy: '',
   otherQuestions: '',
   message: ''
 })
+const resetForm = () => {
+  form.name = ''
+  form.furigana = ''
+  form.email = ''
+  form.phone = ''
+  form.guestSide = 'bride'
+  form.willAttend = 'yes'
+  form.foodAllergy = ''
+  form.otherQuestions = ''
+  form.message = ''
+}
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -124,20 +137,33 @@ const isFormValid = computed(() => {
   )
 })
 
-const handleSubmit = () => {
+const handleSubmit = async () => {
   if (!isFormValid.value) return
+  const payload = { ...form }
 
-  console.group('📂 RSVP Form Submission')
-  console.log('Name:', form.name)
-  console.log('Furigana:', form.furigana)
-  console.log('Email:', form.email)
-  console.log('Phone:', form.phone)
-  console.log('Guest Side:', form.guestSide)
-  console.log('Will Attend:', form.willAttend)
-  console.log('Food Allergy:', form.foodAllergy)
-  console.log('Other Questions:', form.otherQuestions)
-  console.log('Message:', form.message)
-  console.groupEnd()
+  try {
+    const response = await apiClient.post("/reply", payload) as {
+      success: boolean;
+      message: string;
+    }
+    Swal.fire({
+      icon: 'success',
+      title: response.message,
+      showConfirmButton: false,
+      timer: 1500
+    })
+    if (response.success) {
+      resetForm()
+    }
+  } catch (error: any) {
+    console.error("Submission failed:", error)
+    Swal.fire({
+      icon: 'error',
+      title: error.message || 'Something went wrong',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
 }
 
 </script>
